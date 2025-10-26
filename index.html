@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سورة الفاتحة - آيات ١-٧ | Surah Al-Fatiha - Verses 1-7</title>
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/PyuoJ6E.jpeg">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/PyuoJ6E.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding-top: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-player-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .audio-player-section h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .audio-player-section p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .audio-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 25px;
+            outline: none;
+            height: 54px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+        }
+
+        audio:focus {
+            outline: 2px solid #8b4513;
+            outline-offset: 2px;
+        }
+
+        .reciter-info {
+            font-family: 'Amiri', serif;
+            color: #8b4513;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .verse-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .verse-btn {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            min-width: 80px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .verse-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .verse-btn.active {
+            background: linear-gradient(45deg, #a0522d, #8b4513);
+            box-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .arabic-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: #8b4513;
+            margin-bottom: 10px;
+            direction: rtl;
+        }
+
+        .page-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .verses-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow-x: hidden;
+        }
+
+        .fatiha-full {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(to bottom, #f8fdf9, #ffffff);
+            border: 3px solid #8b4513;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .fatiha-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: #8b4513;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .arabic-text-full {
+            font-family: 'Amiri Quran', 'Amiri', serif;
+            font-size: 2.2rem;
+            line-height: 3;
+            text-align: center;
+            direction: rtl;
+            color: #1a472a;
+            margin: 25px 0;
+            padding: 30px;
+            background: #f8fdf9;
+            border-radius: 10px;
+        }
+
+        .verse-line {
+            margin: 15px 0;
+        }
+
+        .verse-marker {
+            display: inline-block;
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: white;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            margin: 0 10px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .english-text-full {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #555;
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .english-verse {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+
+        .reflection-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow-x: hidden;
+        }
+
+        .reflection-section h2 {
+            color: #8b4513;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .reflection-point {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(to right, #fff, #f8f9fa);
+            border-left: 4px solid #a0522d;
+            border-radius: 8px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .reflection-point h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .reflection-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            line-height: 2.2;
+            text-align: right;
+            direction: rtl;
+            color: #2c3e50;
+            padding: 15px;
+            background: #f8fdf9;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: none;
+        }
+
+        .reflection-english {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/PyuoJ6E.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.35;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .footer-text {
+            color: #333;
+            font-style: italic;
+            margin: 10px 0;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .signature {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/PyuoJ6E.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.30;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .signature-header {
+            color: #444;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .signature-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-profile {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #667eea;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-info {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-name {
+            color: #1a1a1a;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .signature-company {
+            color: #5568d3;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .signature-description {
+            color: #444;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .signature-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-btn {
+            padding: 10px 24px;
+            border: 2px solid #5568d3;
+            border-radius: 8px;
+            color: #5568d3;
+            background: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-btn:hover {
+            background: #5568d3;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(85, 104, 211, 0.4);
+        }
+
+        .signature-copyright {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            .arabic-title {
+                font-size: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .page-info {
+                font-size: 0.85rem;
+            }
+
+            .audio-player-section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .audio-player-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .audio-player-section p {
+                font-size: 0.85rem;
+            }
+
+            audio {
+                max-width: 100%;
+            }
+
+            .verse-selector {
+                gap: 6px;
+            }
+
+            .verse-btn {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                flex: 0 0 calc(25% - 6px);
+                text-align: center;
+            }
+
+            .reciter-info {
+                font-size: 1rem;
+            }
+
+            .verses-container {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            .arabic-text-full {
+                font-size: 1.6rem;
+                line-height: 2.6;
+                padding: 20px;
+            }
+
+            .english-text-full {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            .reflection-section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            .reflection-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .reflection-point {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .reflection-point h3 {
+                font-size: 1rem;
+            }
+
+            .reflection-arabic {
+                font-size: 1.1rem;
+                line-height: 2;
+                padding: 12px;
+            }
+
+            .reflection-english {
+                font-size: 0.95rem;
+                padding: 12px;
+            }
+
+            .footer {
+                padding: 20px 15px;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+            }
+
+            .nav-link {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+                margin: 0 5px;
+            }
+
+            .navigation {
+                margin-bottom: 15px;
+            }
+
+            .signature {
+                padding: 15px;
+            }
+
+            .signature-header {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .signature-profile {
+                width: 80px;
+                height: 80px;
+            }
+
+            .signature-name {
+                font-size: 1.3rem;
+            }
+
+            .signature-company {
+                font-size: 0.9rem;
+            }
+
+            .signature-description {
+                font-size: 0.85rem;
+            }
+
+            .signature-btn {
+                padding: 8px 20px;
+                font-size: 0.85rem;
+            }
+
+            .signature-copyright {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .arabic-title {
+                font-size: 1.3rem;
+            }
+
+            .header h1 {
+                font-size: 1.1rem;
+            }
+
+            .verse-btn {
+                flex: 0 0 calc(33.333% - 6px);
+                padding: 10px 8px;
+                font-size: 0.75rem;
+            }
+
+            .arabic-text-full {
+                font-size: 1.4rem;
+                line-height: 2.4;
+                padding: 15px;
+            }
+
+            .english-text-full {
+                font-size: 0.9rem;
+            }
+
+            .reflection-arabic {
+                font-size: 1rem;
+                line-height: 1.9;
+            }
+
+            .reflection-english {
+                font-size: 0.9rem;
+            }
+
+            .nav-link {
+                display: block;
+                margin: 5px auto;
+                max-width: 200px;
+            }
+
+            .signature-profile {
+                width: 70px;
+                height: 70px;
+            }
+
+            .signature-name {
+                font-size: 1.2rem;
+            }
+
+            .signature-description {
+                font-size: 0.8rem;
+            }
+
+            .signature-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .signature-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .navigation {
+                display: none;
+            }
+            .audio-player-section {
+                display: none;
+            }
+            .footer::before,
+            .signature::before {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        let currentVerse = 1;
+        
+        function playVerse(verseNumber) {
+            currentVerse = verseNumber;
+            const audio = document.getElementById('quranAudio');
+            const source = document.getElementById('audioSource');
+            
+            // Format verse number to 3 digits
+            const formattedVerse = String(verseNumber).padStart(3, '0');
+            
+            // Update audio source - Surah 1 (Al-Fatiha)
+            source.src = `https://everyayah.com/data/Abdul_Basit_Murattal_192kbps/001${formattedVerse}.mp3`;
+            
+            // Load and play
+            audio.load();
+            audio.play();
+            
+            // Update button styles
+            document.querySelectorAll('.verse-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Auto-play next verse when current one ends
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('quranAudio');
+            
+            audio.addEventListener('ended', function() {
+                if (currentVerse < 7) {
+                    const nextBtn = document.querySelector(`[onclick="playVerse(${currentVerse + 1})"]`);
+                    if (nextBtn) {
+                        nextBtn.click();
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="#" class="nav-link">Next Page →</a>
+        </div>
+
+        <div class="header">
+            <div class="arabic-title">سورة الفاتحة</div>
+            <h1>Surah Al-Fatiha (The Opening)</h1>
+            <div class="page-info">Page 1 | Verses 1-7 | The Greatest Chapter</div>
+        </div>
+
+        <div class="audio-player-section">
+            <h3>🎧 استماع للسورة | Listen to the Surah</h3>
+            <p>القارئ: عبد الباسط عبد الصمد | Reciter: Abdul Basit Abdus Samad</p>
+            
+            <div class="audio-controls">
+                <audio id="quranAudio" controls>
+                    <source id="audioSource" src="https://everyayah.com/data/Abdul_Basit_Murattal_192kbps/001001.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                
+                <div class="verse-selector">
+                    <button class="verse-btn active" onclick="playVerse(1)">Verse 1</button>
+                    <button class="verse-btn" onclick="playVerse(2)">Verse 2</button>
+                    <button class="verse-btn" onclick="playVerse(3)">Verse 3</button>
+                    <button class="verse-btn" onclick="playVerse(4)">Verse 4</button>
+                    <button class="verse-btn" onclick="playVerse(5)">Verse 5</button>
+                    <button class="verse-btn" onclick="playVerse(6)">Verse 6</button>
+                    <button class="verse-btn" onclick="playVerse(7)">Verse 7</button>
+                </div>
+                
+                <div class="reciter-info">
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                </div>
+            </div>
+        </div>
+
+        <div class="verses-container">
+            <div class="fatiha-full">
+                <div class="fatiha-title">سورة الفاتحة</div>
+                
+                <div class="arabic-text-full">
+                    <div class="verse-line">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class="verse-marker">١</span></div>
+                    <div class="verse-line">ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ <span class="verse-marker">٢</span></div>
+                    <div class="verse-line">ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class="verse-marker">٣</span></div>
+                    <div class="verse-line">مَٰلِكِ يَوْمِ ٱلدِّينِ <span class="verse-marker">٤</span></div>
+                    <div class="verse-line">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="verse-marker">٥</span></div>
+                    <div class="verse-line">ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ <span class="verse-marker">٦</span></div>
+                    <div class="verse-line">صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ <span class="verse-marker">٧</span></div>
+                </div>
+                
+                <div class="english-text-full">
+                    <div class="english-verse">1. In the name of Allah, the Entirely Merciful, the Especially Merciful.</div>
+                    <div class="english-verse">2. [All] praise is [due] to Allah, Lord of the worlds -</div>
+                    <div class="english-verse">3. The Entirely Merciful, the Especially Merciful,</div>
+                    <div class="english-verse">4. Sovereign of the Day of Recompense.</div>
+                    <div class="english-verse">5. It is You we worship and You we ask for help.</div>
+                    <div class="english-verse">6. Guide us to the straight path -</div>
+                    <div class="english-verse">7. The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reflection-section">
+            <h2>💭 تأملات في أعظم سورة | Reflections on The Greatest Chapter</h2>
+            
+            <div class="reflection-point">
+                <h3>🌟 أعظم سورة في القرآن | The Greatest Chapter in the Quran</h3>
+                <div class="reflection-arabic">
+                    الفاتحة هي أعظم سورة في القرآن! قال النبي ﷺ: "لأعلمنك سورة هي أعظم سورة في القرآن - الحمد لله رب العالمين". هي السبع المثاني والقرآن العظيم. تُقرأ في كل ركعة من الصلاة - لا صلاة لمن لم يقرأ بفاتحة الكتاب. فيها الثناء على الله، والعبودية له، والدعاء بالهداية. فيها التوحيد والعبادة والاستعانة والدعاء. إنها خلاصة القرآن كله! كل معاني القرآن موجودة في الفاتحة. من فهم الفاتحة فقد فهم جوهر الإسلام.
+                </div>
+                <div class="reflection-english">
+                    Al-Fatiha is the greatest chapter in the Quran! The Prophet ﷺ said: "I will teach you the greatest chapter in the Quran - All praise is due to Allah, Lord of the worlds." It is the Seven Oft-Repeated Verses and the Great Quran. Recited in every unit of prayer - there is no prayer for one who doesn't recite the Opening of the Book. Contains praise of Allah, servitude to Him, and supplication for guidance. Contains monotheism, worship, seeking help, and supplication. It's the summary of the entire Quran! All meanings of the Quran exist in Al-Fatiha. Whoever understands Al-Fatiha has understood the essence of Islam.
+                </div>
+            </div>
+
+            <div class="reflection-point">
+                <h3>🤲 محادثة بين العبد والرب | Conversation Between Servant and Lord</h3>
+                <div class="reflection-arabic">
+                    الصلاة محادثة بين العبد وربه! قال الله في الحديث القدسي: "قسمت الصلاة بيني وبين عبدي نصفين". إذا قال العبد: الحمد لله رب العالمين - قال الله: حمدني عبدي. الرحمن الرحيم - أثنى عليّ عبدي. مالك يوم الدين - مجّدني عبدي. إياك نعبد وإياك نستعين - هذا بيني وبين عبدي ولعبدي ما سأل. اهدنا الصراط المستقيم... - هذا لعبدي ولعبدي ما سأل. أي عظمة! الله يرد عليك في كل آية تقرأها في الصلاة!
+                </div>
+                <div class="reflection-english">
+                    Prayer is conversation between servant and Lord! Allah said in Hadith Qudsi: "I have divided prayer between Me and My servant in two halves." When servant says: All praise to Allah, Lord of worlds - Allah says: My servant has praised Me. The Merciful, the Compassionate - My servant has lauded Me. Master of Day of Judgment - My servant has glorified Me. You alone we worship, You alone we ask for help - This is between Me and My servant, and My servant shall have what he asks. Guide us to straight path... - This is for My servant, and My servant shall have what he asks. What greatness! Allah responds to you in every verse you recite in prayer!
+                </div>
+            </div>
+
+            <div class="reflection-point">
+                <h3>📚 بنية الفاتحة المحكمة | The Perfect Structure of Al-Fatiha</h3>
+                <div class="reflection-arabic">
+                    الفاتحة محكمة البناء! النصف الأول (١-٤): ثناء على الله - بسم الله، الحمد لله، الرحمن الرحيم، مالك يوم الدين. الآية الوسطى (٥): العبودية - إياك نعبد وإياك نستعين. النصف الثاني (٦-٧): دعاء - اهدنا الصراط المستقيم... بدأت بالثناء، ثم العبودية، ثم الدعاء. هذا هو الأدب مع الله - ابدأ بالثناء عليه قبل أن تطلب! إياك نعبد - توحيد الألوهية. إياك نستعين - توحيد الربوبية. ثم اطلب الهداية. بنية عجيبة محكمة!
+                </div>
+                <div class="reflection-english">
+                    Al-Fatiha is perfectly structured! First half (1-4): Praise of Allah - In name of Allah, Praise to Allah, The Merciful, Master of Day of Judgment. Middle verse (5): Servitude - You alone we worship, You alone we ask for help. Second half (6-7): Supplication - Guide us to straight path... Began with praise, then servitude, then supplication. This is proper etiquette with Allah - begin with praising Him before asking! You alone we worship - monotheism in worship. You alone we ask for help - monotheism in lordship. Then request guidance. Amazing perfect structure!
+                </div>
+            </div>
+
+            <div class="reflection-point">
+                <h3>🛤️ الصراط المستقيم | The Straight Path</h3>
+                <div class="reflection-arabic">
+                    اهدنا الصراط المستقيم! أعظم دعاء في القرآن - طلب الهداية. نحتاج الهداية كل يوم، في كل صلاة، في كل ركعة. الصراط المستقيم هو الإسلام، القرآن، السنة، طريق الأنبياء. صراط الذين أنعمت عليهم - النبيين والصديقين والشهداء والصالحين. غير المغضوب عليهم - الذين عرفوا الحق ولم يعملوا به (اليهود). ولا الضالين - الذين لم يعرفوا الحق (النصارى). الهداية هي أعظم نعمة. اطلبها دائماً من الله.
+                </div>
+                <div class="reflection-english">
+                    Guide us to the straight path! Greatest supplication in Quran - requesting guidance. We need guidance every day, in every prayer, in every unit. Straight path is Islam, Quran, Sunnah, path of prophets. Path of those You favored - prophets, truthful, martyrs, righteous. Not of those who earned anger - those who knew truth but didn't act on it (Jews). Nor of those astray - those who didn't know truth (Christians). Guidance is greatest blessing. Always request it from Allah.
+                </div>
+            </div>
+
+            <div class="reflection-point">
+                <h3>❤️ إياك نعبد وإياك نستعين | You Alone We Worship</h3>
+                <div class="reflection-arabic">
+                    إياك نعبد وإياك نستعين! جوهر التوحيد في آية واحدة. إياك نعبد - نخصك بالعبادة وحدك. وإياك نستعين - نطلب المعونة منك وحدك. قدّم المعبود على الفعل (إياك) للتخصيص والحصر - أنت وحدك لا غيرك. نعبد - نخضع ونذل لك محبة وتعظيماً. نستعين - نطلب العون والتوفيق. لا تقل "أعبدك" بل "إياك نعبد" - بصيغة الجماعة، لأنك جزء من أمة. العبادة بلا استعانة كِبر. والاستعانة بلا عبادة كسل. الجمع بينهما هو الكمال.
+                </div>
+                <div class="reflection-english">
+                    You alone we worship and You alone we ask for help! Essence of monotheism in one verse. You alone we worship - we dedicate worship to You alone. You alone we ask for help - we seek assistance from You alone. Put object before verb (You) for specification and restriction - You alone, no other. We worship - we humble ourselves to You with love and glorification. We ask for help - we seek aid and success. Don't say "I worship You" but "You we worship" - plural form, because you're part of an ummah. Worship without seeking help is arrogance. Seeking help without worship is laziness. Combining them is perfection.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">
+                "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ"
+            </div>
+            <div class="footer-text">
+                "It is You we worship and You we ask for help."
+            </div>
+            <div class="footer-text">
+                May this daily reflection bring us closer to Allah and increase our understanding of His words
+            </div>
+            <div class="footer-text">
+                🤲 آمين يا رب العالمين | Ameen Ya Rabb Al-Alameen 🤲
+            </div>
+        </div>
+
+        <div class="signature">
+            <div class="signature-header">Designed and Coded by</div>
+            <div class="signature-content">
+                <img src="https://balancedlifeharmony-spec.github.io/signature-/profile.jpg" alt="Emhemed Elahresh" class="signature-profile" onerror="this.style.display='none'">
+                <div class="signature-info">
+                    <div class="signature-name">Emhemed Elahresh</div>
+                    <div class="signature-company">Victory Hour Media</div>
+                    <div class="signature-description">
+                        Creating impactful digital experiences and media solutions. Every project is crafted with attention to detail and user experience in mind.
+                    </div>
+                    <div class="signature-buttons">
+                        <a href="mailto:contact@example.com" class="signature-btn">Email</a>
+                        <a href="https://balancedlifeharmony-spec.github.io/signature-/" target="_blank" class="signature-btn">Website</a>
+                    </div>
+                </div>
+            </div>
+            <div class="signature-copyright">© 2025 Emhemed Elahresh. All rights reserved.</div>
+        </div>
+    </div>
+</body>
+</html>
